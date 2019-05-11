@@ -29,7 +29,7 @@
         event.preventDefault();
   
         // Grabbed values from text boxes
-        name = $("#name").val().trim;
+        name = $("#name").val().trim();
         position = $("#position").val().trim();
         startDate = $("#start").val().trim();
         rate = $("#rate").val().trim();
@@ -44,26 +44,47 @@
         });
   
       });
+        database.ref().on("child_added",function(snapshot){
+          var employeeList = snapshot.val();
+          console.log(employeeList.name);
+          console.log(employeeList.position);
+          console.log(employeeList.startDate);
+          console.log(employeeList.rate);
+          
+          $('#employee-list').html("<tr><td>"+employeeList.name+"</td><td>"+employeeList.position+"</td><td>"+employeeList.startDate+"</td><td>"+employeeList.rate+"</td></tr>")
+
+          var monthsWorked
+          var totalBilled
+
+
+
+
+
+
+        },
+        function(errorObject) {
+          console.log("Errors handled: " + errorObject.code);
+        
+        });
+      // // Firebase watcher .on("child_added"
+      // database.ref().on("child_added", function(snapshot) {
+      //   // storing the snapshot.val() in a variable for convenience
+      //   var sv = snapshot.val();
   
-      // Firebase watcher .on("child_added"
-      database.ref().on("child_added", function(snapshot) {
-        // storing the snapshot.val() in a variable for convenience
-        var sv = snapshot.val();
+      //   // Console.loging the last user's data
+      //   console.log(sv.name);
+      //   console.log(sv.position);
+      //   console.log(sv.startDate);
+      //   console.log(sv.rate);
   
-        // Console.loging the last user's data
-        console.log(sv.name);
-        console.log(sv.position);
-        console.log(sv.startDate);
-        console.log(sv.rate);
+      //   // Change the HTML to reflect
+      //   $("#name-display").text(sv.name);
+      //   $("#email-display").text(sv.position);
+      //   $("#age-display").text(sv.startDate);
+      //   $("#comment-display").text(sv.rate);
   
-        // Change the HTML to reflect
-        $("#name-display").text(sv.name);
-        $("#email-display").text(sv.position);
-        $("#age-display").text(sv.startDate);
-        $("#comment-display").text(sv.rate);
-  
-        // Handle the errors
-      }, function(errorObject) {
-        console.log("Errors handled: " + errorObject.code);
-      });
+      //   // Handle the errors
+      // }, function(errorObject) {
+      //   console.log("Errors handled: " + errorObject.code);
+      // });
   
