@@ -29,7 +29,7 @@
         event.preventDefault();
   
         // Grabbed values from text boxes
-        name = $("#name").val();
+        name = $("#name").val().trim;
         position = $("#position").val().trim();
         startDate = $("#start").val().trim();
         rate = $("#rate").val().trim();
