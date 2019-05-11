@@ -53,7 +53,9 @@
           
           $('#employee-list').html("<tr><td>"+employeeList.name+"</td><td>"+employeeList.position+"</td><td>"+employeeList.startDate+"</td><td>"+employeeList.rate+"</td></tr>")
 
-          var monthsWorked
+          var dateFormat = moment(startDate).format('MM/DD/YYYY')
+          console.log(dateFormat)
+
           var totalBilled
 
 
